@@ -16,7 +16,7 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
             //check for ! mark
-            if (nextOpenBracket - 1 == markdown.indexOf("![")) {
+            if (markdown.substring(nextOpenBracket - 1, nextOpenBracket).equals("!")) {
                 //dont count the link or move to next line
                 currentIndex = closeParen + 1;
             }
@@ -26,7 +26,7 @@ public class MarkdownParse {
                     currentIndex = closeParen + 1;
                 }
                 else {
-                    currentIndex = markdown.indexOf("\n", openParen);
+                    currentIndex = markdown.indexOf("\n", openParen) + 1;
                     if (currentIndex == 0) {
                         break;
                     }
