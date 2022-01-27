@@ -15,14 +15,21 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (closeParen > -1) {
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            //check for ! mark
+            if (nextOpenBracket - 1 == markdown.indexOf("![")) {
+                //dont count the link or move to next line
                 currentIndex = closeParen + 1;
             }
             else {
-                currentIndex = markdown.indexOf("\n", openParen);
-                if (currentIndex == 0) {
-                    break;
+                if (closeParen > -1) {
+                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                    currentIndex = closeParen + 1;
+                }
+                else {
+                    currentIndex = markdown.indexOf("\n", openParen);
+                    if (currentIndex == 0) {
+                        break;
+                    }
                 }
             }
         }
