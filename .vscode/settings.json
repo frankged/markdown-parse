@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/frankdrugge/Downloads/cse12-wi22-pa1-RPS-starter-main/libs/hamcrest-core-1.3.jar",
+        "/Users/frankdrugge/Downloads/cse12-wi22-pa1-RPS-starter-main/libs/junit-4.13.2.jar"
+    ]
+}
