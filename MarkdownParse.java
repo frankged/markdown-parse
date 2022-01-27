@@ -16,7 +16,8 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
             //check for ! mark
-            if (markdown.substring(nextOpenBracket - 1, nextOpenBracket).equals("!")) {
+            //int exclaimationMark = markdown.indexOf("!");
+            if (nextOpenBracket != 0 && markdown.substring(nextOpenBracket - 1, nextOpenBracket).equals("!")) {
                 //dont count the link or move to next line
                 currentIndex = closeParen + 1;
             }
