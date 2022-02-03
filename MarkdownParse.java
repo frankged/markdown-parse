@@ -11,16 +11,13 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
 
-        
+
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            //check for ! mark
-            //int exclaimationMark = markdown.indexOf("!");
-            if (nextOpenBracket != 0 && markdown.substring(nextOpenBracket - 1, nextOpenBracket).equals("!")) {
-                //dont count the link or move to next line
+            if (nextOpenBracket != 0 && markdown.substring(nextOpenBracket -1, nextOpenBracket).equals("!")) {
                 currentIndex = closeParen + 1;
             }
             else {
@@ -30,14 +27,16 @@ public class MarkdownParse {
                 }
                 else {
                     currentIndex = markdown.indexOf("\n", openParen) + 1;
-                    if (currentIndex == 0) {
-                        break;
-                    }
+                }
+                if (currentIndex == 0) {
+                    break;
                 }
             }
-        }
-        return toReturn;
+            }
+            
+        return toReturn; 
     }
+
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);
 	    String contents = Files.readString(fileName);
